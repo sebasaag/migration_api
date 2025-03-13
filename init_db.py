@@ -1,8 +1,11 @@
 import os
 import urllib
+import pyodbc
 import pandas as pd
 from sqlalchemy import create_engine, text
 from dotenv import load_dotenv
+from fastapi import FastAPI, Depends
+from sqlalchemy.orm import sessionmaker
 
 # Cargar variables del .env
 load_dotenv()
@@ -73,3 +76,4 @@ load_csv_to_db("Jobs.csv", "jobs", ["id", "job"])
 load_csv_to_db("hired_employees.csv", "hired_employees", ["id", "name", "datetime", "department_id", "job_id"])
 
 print("✅ Base de datos y tablas creadas correctamente, y datos insertados desde CSV.")
+
